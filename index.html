@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Temperatur in Magdeburg</title>
+
+
+</head>
+
+<body>
+    <h1>Temperatur in Magdeburg</h1>
+    <p id="temperature">Laden...</p>
+
+    <h1>Temperatur in Enkirch</h1>
+    <p id="temperature2">schnell Laden...</p>
+
+    <h1>Temperatur in Zempin</h1>
+    <p id="temperature3">schnell Laden...</p>
+</body>
+<script>
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=Magdeburg,de&appid=aab0730ebc981d515103c53016368f9e')
+        .then(response => response.json())
+
+    .then(data => {
+        let celsius = data.main.temp - 273.15;
+        document.getElementById('temperature').innerHTML = celsius.toFixed(1) + '°C';
+        //document.getElementById('temperature').innerHTML = data.main.temp + ' °C';
+    });
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=Enkirch,de&appid=aab0730ebc981d515103c53016368f9e')
+        .then(response => response.json())
+
+    .then(data => {
+        let celsius = data.main.temp - 273.15;
+        document.getElementById('temperature2').innerHTML = celsius.toFixed(1) + '°C';
+    });
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=Zempin,de&appid=aab0730ebc981d515103c53016368f9e')
+        .then(response => response.json())
+
+    .then(data => {
+        let celsius = data.main.temp - 273.15;
+        document.getElementById('temperature3').innerHTML = celsius.toFixed(1) + '°C';
+    });
+</script>
+
+
+</html>
