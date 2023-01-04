@@ -16,6 +16,10 @@
 
     <h1>Temperatur in Zempin</h1>
     <p id="temperature3">schnell Laden...</p>
+    
+    <h1>Temperatur in Palma de Mallorca</h1>
+    <p id="temperature4">ich Laden...</p>
+    
 </body>
 <script>
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Magdeburg,de&appid=aab0730ebc981d515103c53016368f9e')
@@ -40,6 +44,16 @@
         let celsius = data.main.temp - 273.15;
         document.getElementById('temperature3').innerHTML = celsius.toFixed(1) + '°C';
     });
+    
+       fetch('https://api.openweathermap.org/data/2.5/weather?lat=39.569600&lon=2.650100&appid=aab0730ebc981d515103c53016368f9e')
+        .then(response => response.json())
+
+    .then(data => {
+        let celsius = data.main.temp - 273.15;
+        document.getElementById('temperature4').innerHTML = celsius.toFixed(1) + '°C';
+
+    });
+    
 </script>
 
 
