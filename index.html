@@ -8,18 +8,21 @@
 </head>
 
 <body>
-    <h1>Temperatur in MD</h1>
+    <h1>Temperatur in Magdeburg</h1>
     <p id="temperature">Laden...</p>
+    <p id="rain">Laden...</p>
+    <p id="wind-gusts">Laden...</p>
+    <p id="wind-speed">Laden...</p>
+    <p id="wind-direction">Laden...</p>
 
     <h1>Temperatur in Enkirch</h1>
     <p id="temperature2">schnell Laden...</p>
 
     <h1>Temperatur in Zempin</h1>
     <p id="temperature3">schnell Laden...</p>
-    
-    <h1>Temperatur in Palma</h1>
+
+    <h1>Temperatur in Palma de Mallorca</h1>
     <p id="temperature4">ich Laden...</p>
-    
 </body>
 <script>
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Magdeburg,de&appid=aab0730ebc981d515103c53016368f9e')
@@ -27,9 +30,52 @@
 
     .then(data => {
         let celsius = data.main.temp - 273.15;
-        document.getElementById('temperature').innerHTML = celsius.toFixed(1) + '°C';
-        //document.getElementById('temperature').innerHTML = data.main.temp + ' °C';
+        document.getElementById('temperature').innerHTML = 'Temperatur: ' + celsius.toFixed(1) + '°C';
+        // Regen
+        let rain;
+        if (data.rain) {
+            rain = data.rain['3h'];
+        } else {
+            rain = 'Kein Regen';
+        }
+        document.getElementById('rain').innerHTML = 'Regen: ' + rain;
+
+        // Windgeschwindigkeit
+        let windSpeed = data.wind.speed;
+        let windSpeedInKmh = windSpeed * 3.6;
+        document.getElementById('wind-speed').innerHTML = 'Windgeschwindigkeit: ' + windSpeedInKmh.toFixed(1) + ' km/h';
+
+        // Windböen
+        let windGusts = data.wind.gust;
+        let windGustsInKmh = windGusts * 3.6;
+        document.getElementById('wind-gusts').innerHTML = 'Windböen: ' + windGustsInKmh.toFixed(1) + 'kmh';
+
+        // Windrichtung
+        let windDirection = data.wind.deg;
+        let direction;
+        if (windDirection >= 337.5 && windDirection <= 22.5) {
+            direction = 'N';
+        } else if (windDirection >= 22.5 && windDirection <= 67.5) {
+            direction = 'NE';
+        } else if (windDirection >= 67.5 && windDirection <= 112.5) {
+            direction = 'E';
+        } else if (windDirection >= 112.5 && windDirection <= 157.5) {
+            direction = 'SE';
+        } else if (windDirection >= 157.5 && windDirection <= 202.5) {
+            direction = 'S';
+        } else if (windDirection >= 202.5 && windDirection <= 247.5) {
+            direction = 'SW';
+        } else if (windDirection >= 247.5 && windDirection <= 292.5) {
+            direction = 'W';
+        } else if (windDirection >= 292.5 && windDirection <= 337.5) {
+            direction = 'NW';
+        }
+        document.getElementById('wind-direction').innerHTML = 'Windrichtung: ' + direction;
+
     });
+
+
+
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Enkirch,de&appid=aab0730ebc981d515103c53016368f9e')
         .then(response => response.json())
 
@@ -37,6 +83,7 @@
         let celsius = data.main.temp - 273.15;
         document.getElementById('temperature2').innerHTML = celsius.toFixed(1) + '°C';
     });
+
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Zempin,de&appid=aab0730ebc981d515103c53016368f9e')
         .then(response => response.json())
 
@@ -44,8 +91,8 @@
         let celsius = data.main.temp - 273.15;
         document.getElementById('temperature3').innerHTML = celsius.toFixed(1) + '°C';
     });
-    
-       fetch('https://api.openweathermap.org/data/2.5/weather?lat=39.569600&lon=2.650100&appid=aab0730ebc981d515103c53016368f9e')
+
+    fetch('https://api.openweathermap.org/data/2.5/weather?lat=39.569600&lon=2.650100&appid=aab0730ebc981d515103c53016368f9e')
         .then(response => response.json())
 
     .then(data => {
@@ -53,7 +100,6 @@
         document.getElementById('temperature4').innerHTML = celsius.toFixed(1) + '°C';
 
     });
-    
 </script>
 
 
