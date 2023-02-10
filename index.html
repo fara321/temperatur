@@ -43,12 +43,12 @@
         // Windgeschwindigkeit
         let windSpeed = data.wind.speed;
         let windSpeedInKmh = windSpeed * 3.6;
-        document.getElementById('wind-speed').innerHTML = 'Wind: ' + windSpeedInKmh.toFixed(1) + ' km/h';
+        document.getElementById('wind-speed').innerHTML = 'Wind: ' + windSpeedInKmh.toFixed(0) + ' km/h';
 
         // Windböen
         let windGusts = data.wind.gust;
         let windGustsInKmh = windGusts * 3.6;
-        document.getElementById('wind-gusts').innerHTML = 'Windböen: ' + windGustsInKmh.toFixed(1) + 'kmh';
+        document.getElementById('wind-gusts').innerHTML = 'Windböen: ' + windGustsInKmh.toFixed(0) + 'kmh';
 
         // Windrichtung
         let windDirection = data.wind.deg;
