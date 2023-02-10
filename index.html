@@ -14,6 +14,8 @@
     <p id="wind-gusts">Laden...</p>
     <p id="wind-speed">Laden...</p>
     <p id="wind-direction">Laden...</p>
+    <div id="icon">Laden...</div>
+
 
     <h1>Enkirch</h1>
     <p id="temperature2">schnell Laden...</p>
@@ -71,6 +73,12 @@
             direction = 'NW';
         }
         document.getElementById('wind-direction').innerHTML = 'Windrichtung: ' + direction;
+        
+        let iconCode = data.weather[0].icon;
+        let iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+        let iconElement = document.createElement('img');
+        iconElement.setAttribute('src', iconUrl);
+        document.getElementById('icon').appendChild(iconElement);
 
     });
 
