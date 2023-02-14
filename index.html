@@ -8,23 +8,40 @@
 </head>
 
 <body>
-    <h1>Magdeburg</h1>
-    <p id="temperature">Laden...</p>
+    <!--<div style="display: flex; align-items: flex-start;">> -->
+    <div style="display: flex; align-items: center; justify-content: left;">
+        <!--<h1>Magdeburg</h1> style="flex: 1;">-->
+        <h1 style="margin-right: 1px;">Magdeburg</h1>
+        <p id="icon"> </p>
+    </div>
+    <p style=“line-height: 10%“ id="temperature">Laden...</p>
+    <!--<p id="temperature">Laden...</p>-->
     <p id="rain">Laden...</p>
     <p id="wind-gusts">Laden...</p>
     <p id="wind-speed">Laden...</p>
     <p id="wind-direction">Laden...</p>
-    <div id="icon">Laden...</div>
 
 
-    <h1>Enkirch</h1>
-    <p id="temperature2">schnell Laden...</p>
+    <div style="display: flex; align-items: center; justify-content: left;">
+        <h1>Enkirch</h1> style="flex: 1;">
+        <p id="icon2"> </p>
+    </div>
+    <p id="temperature2">Laden...</p>
 
-    <h1>Zempin</h1>
-    <p id="temperature3">schnell Laden...</p>
+    <div style="display: flex; align-items: center; justify-content: left;">
+        <h1>Zempin</h1> style="flex: 1;">
+        <p id="icon3"> </p>
+    </div>
+    <p id="temperature3">Laden...</p>
 
-    <h1>Palma de Mallorca</h1>
-    <p id="temperature4">ich Laden...</p>
+
+    <div style="display: flex; align-items: center; justify-content: left;">
+        <h1>Palma</h1> style="flex: 1;">
+        <p id="icon4"> </p>
+    </div>
+    <p id="temperature4">Laden...</p>
+
+
 </body>
 <script>
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Magdeburg,de&appid=aab0730ebc981d515103c53016368f9e')
@@ -73,7 +90,7 @@
             direction = 'NW';
         }
         document.getElementById('wind-direction').innerHTML = 'Windrichtung: ' + direction;
-        
+
         let iconCode = data.weather[0].icon;
         let iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
         let iconElement = document.createElement('img');
@@ -90,6 +107,13 @@
     .then(data => {
         let celsius = data.main.temp - 273.15;
         document.getElementById('temperature2').innerHTML = celsius.toFixed(1) + '°C';
+
+        let iconCode2 = data.weather[0].icon;
+        let iconUrl = `https://openweathermap.org/img/wn/${iconCode2}@2x.png`;
+        let iconElement2 = document.createElement('img');
+        iconElement2.setAttribute('src', iconUrl);
+        document.getElementById('icon2').appendChild(iconElement2);
+
     });
 
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Zempin,de&appid=aab0730ebc981d515103c53016368f9e')
@@ -98,6 +122,13 @@
     .then(data => {
         let celsius = data.main.temp - 273.15;
         document.getElementById('temperature3').innerHTML = celsius.toFixed(1) + '°C';
+
+        let iconCode3 = data.weather[0].icon;
+        let iconUrl = `https://openweathermap.org/img/wn/${iconCode3}@2x.png`;
+        let iconElement3 = document.createElement('img');
+        iconElement3.setAttribute('src', iconUrl);
+        document.getElementById('icon3').appendChild(iconElement3);
+
     });
 
     fetch('https://api.openweathermap.org/data/2.5/weather?lat=39.569600&lon=2.650100&appid=aab0730ebc981d515103c53016368f9e')
@@ -106,6 +137,14 @@
     .then(data => {
         let celsius = data.main.temp - 273.15;
         document.getElementById('temperature4').innerHTML = celsius.toFixed(1) + '°C';
+
+
+        let iconCode4 = data.weather[0].icon;
+        let iconUrl = `https://openweathermap.org/img/wn/${iconCode4}@2x.png`;
+        let iconElement4 = document.createElement('img');
+        iconElement4.setAttribute('src', iconUrl);
+        document.getElementById('icon4').appendChild(iconElement4);
+
 
     });
 </script>
