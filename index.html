@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -8,35 +9,43 @@
 </head>
 
 <body>
-    <!--<div style="display: flex; align-items: flex-start;">> -->
+
     <div style="display: flex; align-items: center; justify-content: left;">
         <!--<h1>Magdeburg</h1> style="flex: 1;">-->
         <h1 style="margin-right: 1px;">Magdeburg</h1>
         <p id="icon"> </p>
     </div>
-    <p style=“line-height: 10%“ id="temperature">Laden...</p>
-    <!--<p id="temperature">Laden...</p>-->
-    <p id="rain">Laden...</p>
-    <p id="wind-gusts">Laden...</p>
-    <p id="wind-speed">Laden...</p>
+
+    <div style="display: flex; align-items: center; justify-content: left;">
+
+        <p id="temperature">Laden...</p>
+        <p id="rain">Laden...</p>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: left;">
+        <p id="wind-gusts">Laden...</p>
+        <p id="wind-speed">Laden...</p>
+    </div>
+
+
     <p id="wind-direction">Laden...</p>
 
 
     <div style="display: flex; align-items: center; justify-content: left;">
-        <h1>Enkirch</h1> style="flex: 1;">
+        <h1>Enkirch</h1>
         <p id="icon2"> </p>
     </div>
     <p id="temperature2">Laden...</p>
 
     <div style="display: flex; align-items: center; justify-content: left;">
-        <h1>Zempin</h1> style="flex: 1;">
+        <h1>Zempin</h1>
         <p id="icon3"> </p>
     </div>
     <p id="temperature3">Laden...</p>
 
 
     <div style="display: flex; align-items: center; justify-content: left;">
-        <h1>Palma</h1> style="flex: 1;">
+        <h1>Palma</h1>
         <p id="icon4"> </p>
     </div>
     <p id="temperature4">Laden...</p>
@@ -49,7 +58,7 @@
 
     .then(data => {
         let celsius = data.main.temp - 273.15;
-        document.getElementById('temperature').innerHTML = 'Temperatur: ' + celsius.toFixed(1) + '°C';
+        document.getElementById('temperature').innerHTML = celsius.toFixed(1) + '°C';
         // Regen
         let rain;
         if (data.rain) {
@@ -57,17 +66,17 @@
         } else {
             rain = 'Kein Regen';
         }
-        document.getElementById('rain').innerHTML = 'Regen: ' + rain;
+        document.getElementById('rain').innerHTML = '------' + rain;
 
         // Windgeschwindigkeit
         let windSpeed = data.wind.speed;
         let windSpeedInKmh = windSpeed * 3.6;
-        document.getElementById('wind-speed').innerHTML = 'Wind: ' + windSpeedInKmh.toFixed(0) + ' km/h';
+        document.getElementById('wind-speed').innerHTML = '----- Wind: ' + windSpeedInKmh.toFixed(0) + ' km/h';
 
         // Windböen
         let windGusts = data.wind.gust;
         let windGustsInKmh = windGusts * 3.6;
-        document.getElementById('wind-gusts').innerHTML = 'Windböen: ' + windGustsInKmh.toFixed(0) + 'kmh';
+        document.getElementById('wind-gusts').innerHTML = 'Böen: ' + windGustsInKmh.toFixed(0) + 'kmh';
 
         // Windrichtung
         let windDirection = data.wind.deg;
