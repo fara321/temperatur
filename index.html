@@ -13,17 +13,21 @@
     <div style="display: flex; align-items: center; justify-content: left;">
         <!--<h1>Magdeburg</h1> style="flex: 1;">-->
         <h1 style="margin-right: 1px;">Magdeburg</h1>
+
         <p id="icon"> </p>
     </div>
 
     <div style="display: flex; align-items: center; justify-content: left;">
 
         <p id="temperature">Laden...</p>
+        <p> &nbsp; &nbsp; &nbsp; </p>
         <p id="rain">Laden...</p>
     </div>
 
     <div style="display: flex; align-items: center; justify-content: left;">
         <p id="wind-gusts">Laden...</p>
+        <p> &nbsp; &nbsp; &nbsp; </p>
+
         <p id="wind-speed">Laden...</p>
     </div>
 
@@ -66,12 +70,12 @@
         } else {
             rain = 'Kein Regen';
         }
-        document.getElementById('rain').innerHTML = '------' + rain;
+        document.getElementById('rain').innerHTML = rain;
 
         // Windgeschwindigkeit
         let windSpeed = data.wind.speed;
         let windSpeedInKmh = windSpeed * 3.6;
-        document.getElementById('wind-speed').innerHTML = '----- Wind: ' + windSpeedInKmh.toFixed(0) + ' km/h';
+        document.getElementById('wind-speed').innerHTML = 'Wind: ' + windSpeedInKmh.toFixed(0) + ' km/h';
 
         // Windböen
         let windGusts = data.wind.gust;
