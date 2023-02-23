@@ -80,7 +80,7 @@
         // Windböen
         let windGusts = data.wind.gust;
         let windGustsInKmh = windGusts * 3.6;
-        document.getElementById('wind-gusts').innerHTML = 'Böen: ' + windGustsInKmh.toFixed(0) + 'kmh';
+        document.getElementById('wind-gusts').innerHTML = 'Böen: ' + windGustsInKmh.toFixed(0) + 'km/h';
 
         // Windrichtung
         let windDirection = data.wind.deg;
@@ -88,11 +88,11 @@
         if (windDirection >= 337.5 && windDirection <= 22.5) {
             direction = 'N';
         } else if (windDirection >= 22.5 && windDirection <= 67.5) {
-            direction = 'NE';
+            direction = 'NO';
         } else if (windDirection >= 67.5 && windDirection <= 112.5) {
-            direction = 'E';
+            direction = 'O';
         } else if (windDirection >= 112.5 && windDirection <= 157.5) {
-            direction = 'SE';
+            direction = 'SO';
         } else if (windDirection >= 157.5 && windDirection <= 202.5) {
             direction = 'S';
         } else if (windDirection >= 202.5 && windDirection <= 247.5) {
