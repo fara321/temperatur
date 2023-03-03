@@ -52,7 +52,11 @@
         <h1>Palma</h1>
         <p id="icon4"> </p>
     </div>
-    <p id="temperature4">Laden...</p>
+  <div style="display: flex; align-items: center; justify-content: left;">
+        <p id="temperature4">Laden...</p>
+        <p> &nbsp; &nbsp; &nbsp; </p>
+        <p id="rain2">Laden...</p>
+    </div>
 
 
 </body>
@@ -157,7 +161,14 @@
         let iconElement4 = document.createElement('img');
         iconElement4.setAttribute('src', iconUrl);
         document.getElementById('icon4').appendChild(iconElement4);
-
+   // Regen
+        let rain2;
+        if (data.rain) {
+            rain2 = data.rain['3h'];
+        } else {
+            rain2 = 'Kein Regen';
+        }
+        document.getElementById('rain2').innerHTML = rain2;
 
     });
 </script>
