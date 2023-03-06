@@ -11,7 +11,7 @@
         } else {
             rain = 'Kein Regen';
         }
-        document.getElementById('rain').innerHTML = rain;
+        document.getElementById('rain').innerHTML = 'Regen: ' + rain;
 
         // Windgeschwindigkeit
         let windSpeed = data.wind.speed;
