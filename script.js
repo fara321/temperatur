@@ -107,7 +107,7 @@
    // Regen
         let rain2;
         if (data.rain) {
-            rain2 = data.rain['3h'];
+            rain2 = data.rain['1h'];
         } else {
             rain2 = 'Kein Regen';
         }
