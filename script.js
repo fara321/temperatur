@@ -11,7 +11,7 @@
         } else {
             rain = 'Kein Regen';
         }
-        document.getElementById('rain').innerHTML = 'Regen: ' + rain + ' mm / qm';
+        document.getElementById('rain').innerHTML = rain + ' mm / qm';
 
         // Windgeschwindigkeit
         let windSpeed = data.wind.speed;
