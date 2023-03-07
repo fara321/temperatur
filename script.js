@@ -26,7 +26,7 @@
             let windGustsInKmh = windGusts * 3.6;
             document.getElementById('wind-gusts').innerHTML = 'Böen: ' + windGustsInKmh.toFixed(0) + 'km/h';
         } else {
-            document.getElementById('wind-gusts').innerHTML = 'Böen: Keine Daten verfügbar';
+            document.getElementById('wind-gusts').innerHTML = 'Böen: Keine Daten';
         }
 
         // Windrichtung
