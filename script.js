@@ -20,8 +20,14 @@
 
         // Windböen
         let windGusts = parseFloat(data.wind.gust);
-        let windGustsInKmh = windGusts * 3.6;
-        document.getElementById('wind-gusts').innerHTML = 'Böen: ' + windGustsInKmh.toFixed(0) + 'km/h';
+  // let windGustsInKmh = windGusts * 3.6;
+        // document.getElementById('wind-gusts').innerHTML = 'Böen: ' + windGustsInKmh.toFixed(0) + 'km/h';
+        if (!isNaN(windGusts)) {
+            let windGustsInKmh = windGusts * 3.6;
+            document.getElementById('wind-gusts').innerHTML = 'Böen: ' + windGustsInKmh.toFixed(0) + 'km/h';
+        } else {
+            document.getElementById('wind-gusts').innerHTML = 'Böen: Keine Daten verfügbar';
+        }
 
         // Windrichtung
         let windDirection = data.wind.deg;
