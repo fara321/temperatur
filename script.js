@@ -56,6 +56,10 @@
         let iconElement = document.createElement('img');
         iconElement.setAttribute('src', iconUrl);
         document.getElementById('icon').appendChild(iconElement);
+        
+                // Luftfeuchtigkeit
+        let humidity = data.main.humidity;
+        document.getElementById('humidity').innerHTML = humidity;
 
     });
 
