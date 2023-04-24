@@ -62,7 +62,7 @@
         document.getElementById('humidity').innerHTML = humidity;
         if (humidity < 50) {
             document.getElementById('message').innerHTML = 'Fenster öffnen!';
-        } else if (humidity > 59) {
+        } else if (humidity > 60) {
             document.getElementById('message').innerHTML = 'Fenster schließen!';
         } else {
             document.getElementById('message').innerHTML = 'Fenster offen?';
