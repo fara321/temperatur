@@ -65,7 +65,7 @@
         } else if (humidity > 59) {
             document.getElementById('message').innerHTML = 'Fenster schließen!';
         } else {
-            document.getElementById('message').innerHTML = 'Keine Aktion erforderlich.';
+            document.getElementById('message').innerHTML = 'Fenster offen?';
         }
 
     });
