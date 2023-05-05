@@ -67,6 +67,10 @@
         } else {
             document.getElementById('message').innerHTML = 'Fenster offen?';
         }
+        
+        // Luftdruck
+        let pressure = data.main.pressure;
+        document.getElementById('pressure').innerHTML = 'Luftdruck: ' + pressure.toFixed(0) + ' hPa';
 
     });
 
