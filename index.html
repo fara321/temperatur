@@ -14,14 +14,14 @@
     <div style="display: flex; align-items: center; justify-content: left;">
         <!--<h1>Magdeburg</h1> style="flex: 1;">-->
         <h1 style="margin-right: 1px;">Magdeburg</h1>
-          <p id="icon"> </p>
-          <p id="temperature">Laden...</p>
+        <p id="icon"> </p>
+        <p id="temperature">Laden...</p>
     </div>
 
     <div style="display: flex; align-items: center; justify-content: left;">
-<!--       <p> &nbsp; &nbsp; &nbsp; </p> -->
+        <!--       <p> &nbsp; &nbsp; &nbsp; </p> -->
         <p id="rain">Laden...</p>
-           <p> &nbsp; &nbsp; &nbsp; </p> 
+        <p> &nbsp; &nbsp; &nbsp; </p>
         <p id="wind-direction">Laden...</p>
     </div>
 
@@ -29,40 +29,69 @@
         <p id="wind-gusts">Laden...</p>
         <p> &nbsp; &nbsp; &nbsp; </p>
         <p id="wind-speed">Laden...</p>
-    </div>  
-    
+    </div>
+
     <div style="display: flex; align-items: center; justify-content: left;">
         <p> Luftfeuchtigkeit: <span id="humidity"></span>%</p>
         <p> &nbsp; &nbsp; &nbsp; </p>
         <p id="message"> </p>
     </div>
-       <div style="display: flex; align-items: center; justify-content: left;">
+    <div style="display: flex; align-items: center; justify-content: left;">
         <p id="pressure">DruckLaden...</p>
 
+    </div>
+    <!--      Eingabe Temp + Feuchte  <p> &nbsp; &nbsp; &nbsp; </p> -->
+
+    <p>
+        <label for="temperatureInput">Temperatur (°C):</label>
+        <input type="number" id="temperatureInput" class="input-field">
+
+        <label for="humidityInput">Relative Feuchte (%):</label>
+        <input type="number" id="humidityInput" class="input-field">
+
+        <button onclick="calculateAbsoluteHumidityin()">Berechnen</button>
+    </p>
+    <div style="display: flex; align-items: center; justify-content: left;">
+        <!--<p id="absoluteHumidityin">abs. F. berechnen....</p> -->
+        <p id="absoluteHumidityin">abs. F. berechnen....</p>
     </div>
 
     <div style="display: flex; align-items: center; justify-content: left;">
         <h1>Enkirch</h1>
         <p id="icon2"> </p>
-    <p id="temperature2">Laden...</p>
+        <p id="temperature2">Laden...</p>
     </div>
-    
+
     <div style="display: flex; align-items: center; justify-content: left;">
         <h1>Zempin</h1>
         <p id="icon3"> </p>
         <p id="temperature3">Laden...</p>
-</div>
+    </div>
 
     <div style="display: flex; align-items: center; justify-content: left;">
         <h1>Palma</h1>
         <p id="icon4"> </p>
-          <p id="temperature4">Laden...</p>
+        <p id="temperature4">Laden...</p>
     </div>
-  <div style="display: flex; align-items: center; justify-content: left;">
-     <!--         <p> &nbsp; &nbsp; &nbsp; </p> -->
+    <div style="display: flex; align-items: center; justify-content: left;">
+        <!--         <p> &nbsp; &nbsp; &nbsp; </p> -->
         <p id="rain2">Laden...</p>
     </div>
+    <script>
+        const pressurein = 1050; // Druck in hPa
 
+        function calculateAbsoluteHumidityin() {
+            const temperaturein = parseFloat(document.getElementById("temperatureInput").value);
+            const relativeHumidity = parseFloat(document.getElementById("humidityInput").value);
+
+            // Berechnung der absoluten Feuchte
+            const saturationVaporPressure = 8.112 * Math.exp((17.67 * temperaturein) / (temperaturein + 243.5)); // Sättigungsdampfdruck bei 16°C
+            const vaporPressure = (relativeHumidity / 100) * saturationVaporPressure; // Partialdruck des Wasserdampfes
+            const absoluteHumidity = ((vaporPressure * 1000) / (pressurein - 0.378 * vaporPressure)) * (0.62198 / 1) * (273.15 / (273.15 + temperaturein)); // Absolute Feuchte in g/m³
+            document.getElementById('absoluteHumidityin').innerHTML = "Innen absol. Feuchte  :   " + absoluteHumidity.toFixed(2) + " g/m³"; // Ausgabe des Ergebnisses
+
+        }
+    </script>
 
 </body>
 
