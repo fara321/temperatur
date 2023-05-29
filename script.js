@@ -72,8 +72,29 @@
     let pressure = data.main.pressure;
     document.getElementById('pressure').innerHTML = 'Luftdruck: ' + pressure.toFixed(0) + ' hPa';
 
-    //abs. Feuchte berechnen
+        // absolute Feuchte außen
 
+        calculateAbsoluteHumidityout();
+        function calculateAbsoluteHumidityout(absoluteHumidityout) {
+            fetch('https://api.openweathermap.org/data/2.5/weather?q=Magdeburg,de&appid=aab0730ebc981d515103c53016368f9e')
+                .then(response => response.json())
+
+            .then(data => {
+                const pressurein = 1050; // Druck in hPa
+                let celsius = data.main.temp - 273.15;
+                // document.getElementById('temperatureout').innerHTML = celsius.toFixed(1);
+
+                let humidity = data.main.humidity;
+               
+                const saturationVaporPressure = 8.112 * Math.exp((17.67 * celsius) / (celsius + 243.5)); // Sättigungsdampfdruck bei 16°C
+                const vaporPressure = (humidity / 100) * saturationVaporPressure; // Partialdruck des Wasserdampfes
+                const absoluteHumidityout = ((vaporPressure * 1000) / (pressurein - 0.378 * vaporPressure)) * (0.62198 / 1) * (273.15 / (273.15 + celsius)); // Absolute Feuchte in g/m³
+
+                document.getElementById('absoluteHumidityout2').innerHTML = "Außen absol. Feuchte  :   " + absoluteHumidityout.toFixed(2) + " g/m³"; // Ausgabe des Ergebnisses
+
+            })
+
+        }
 
 
 
