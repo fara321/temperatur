@@ -48,7 +48,7 @@
     <p>
    
        <label for="temperatureInput">Temperatur (°C):</label>
-        <input type="number" id="temperatureInput" class="input-field" value="20">
+        <input type="number" id="temperatureInput" class="input-field" value="20" style="width: 90px;">
 
         <label for="humidityInput">rel. Feuchte (%):</label>
         <input type="number" id="humidityInput" class="input-field" value="65">
@@ -82,6 +82,18 @@
         <p id="rain2">Laden...</p>
     </div>
     <script>
+        function calculateAbsoluteHumidityin() {
+            const temperatureInput = document.getElementById("temperatureInput").value;
+            const temperature = parseFloat(temperatureInput);
+        
+            if (!isNaN(temperature)) {
+                // Temperatur ist eine gültige Zahl
+                // Jetzt können Sie die Berechnung der absoluten Feuchte durchführen
+                // ...
+            } else {
+                alert("Bitte geben Sie eine gültige Temperatur ein.");
+            }
+        }
         const pressurein = 1050; // Druck in hPa
 
         function calculateAbsoluteHumidityin() {
